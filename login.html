@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("k.png");
+
+  min-height: 230%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+<script type="text/javascript">
+  var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+// replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+clevertap.account.push({"id": "TEST-98R-R54-5Z6Z"});
+clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+(function () {
+  var wzrk = document.createElement('script');
+  wzrk.type = 'text/javascript';
+  wzrk.async = true;
+  wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(wzrk, s);
+})();
+</script>
+
+<script type="text/javascript">
+    function userLogin() {
+        
+   // with the exception of one of Identity, Email, or FBID
+  // each of the following fields is optional
+ 
+ clevertap.onUserLogin.push({
+   "Site": {
+     "Name":  document.getElementById("name").value,            // String
+    // "Identity": 290507,              // String or number
+     "Email": document.getElementById("email").value,         // Email address of the user
+     "Gender": "F",                     // Can be either M or F
+     "DOB":new Date(document.getElementById("dob").value),
+     //document.getElementById("dob").value,                 // Date of Birth. Date object
+  // optional fields. controls whether the user will be sent email, push etc.
+     "MSG-email": false,                // Disable email notifications
+     "MSG-push": true,                  // Enable push notifications
+     "MSG-sms": true,                   // Enable sms notifications
+     "MSG-whatsapp": true,              // Enable WhatsApp notifications
+   }
+  })
+  clevertap.event.push("User Login");
+  alert("Login Successful");
+  }
+
+  
+</script>
+  
+</head>
+<body>
+<div class="bg-img">
+  <form action="#" method="post" onsubmit="return userLogin()" class="container" >
+    <h1>Login</h1>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="name" id="name" required>
+
+    <label for="dob"><b>Date of Birth</b></label>
+    <input type="date" placeholder="Enter Date of Birth" name="dob" id="dob" required>
+    <br><br>
+    <label for="email"> <b>Email </b> </label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+    <label for="psw"> <b> Password </b> </label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+
+    <button type="submit" class="btn">Login</button>
+    <br><br>
+   <button class="btn" onclick="document.location='index.html'">Home</button>
+  </form>
+</div>
+<p></p>
+
+</body>
+</html>
