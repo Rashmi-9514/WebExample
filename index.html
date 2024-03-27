@@ -214,7 +214,8 @@ clevertap.onUserLogin.push({
 <div class="footer">
   <h2> © Rashmi Yadav</h2>
 </div>
-<script>window.analytics.ready(() => {
+<script>
+window.analytics.ready(() => {
          clevertap.notifications.push({
           "titleText":'Would you like to receive Push Notifications?',
           "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
@@ -226,6 +227,9 @@ clevertap.onUserLogin.push({
 
         isLoaded: () => true
       
-}) </script> 
+})   
+
+</script>
+ 
 </body>
 </html>
