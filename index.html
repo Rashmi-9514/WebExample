@@ -214,6 +214,18 @@ clevertap.onUserLogin.push({
 <div class="footer">
   <h2> © Rashmi Yadav</h2>
 </div>
-<script src="notification_prompt.js"></script>
+<script>window.analytics.ready(() => {
+         clevertap.notifications.push({
+          "titleText":'Would you like to receive Push Notifications?',
+          "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
+          "okButtonText":'Sign me up!',
+          "rejectButtonText":'No thanks',
+          "okButtonColor":'#f28046',
+         "serviceWorkerPath": "clevertap_sw.js"
+         });
+
+        isLoaded: () => true
+      
+}) </script> 
 </body>
 </html>
