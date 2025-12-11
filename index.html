@@ -109,12 +109,12 @@
       rejectButtonText: 'No thanks',
       okButtonColor: '#f28046',
       serviceWorkerPath: 'clevertap_sw.js', 
-      "skipDialog":true
+     //"skipDialog":true
     });
   </script>
 
   <!-- Notification permission watcher: immediate log, Permissions API event, and fallback polling -->
-  <script>
+  <!-- <script>
     (function () {
       // Immediately log current permission
       console.log('Initial Notification.permission =', Notification.permission);
@@ -185,6 +185,6 @@
       // call Notification.requestPermission().then(result => handlePermissionChange(result));
       // But don't call it automatically unless you want the browser dialog to appear.
     })();
-  </script>
+  </script> -->
 </body>
 </html>
