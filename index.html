@@ -1,248 +1,189 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="manifest" href="manifest.json">
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Vellesketchers</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; }
+    .header { padding: 80px; text-align: center; background: #1abc9c; color: white; }
+    .header h1 { font-size: 40px; }
+    .navbar { overflow: hidden; background-color: #333; position: sticky; position: -webkit-sticky; top: 0; }
+    .navbar a { float: left; display: block; color: white; text-align: center; padding: 14px 20px; text-decoration: none;}
+    .navbar a.right { float: right; }
+    .navbar a:hover { background-color: #ddd; color: black; }
+    .navbar a.active { background-color: #666; color: white; }
+    .row { display: flex; flex-wrap: wrap; }
+    .side { flex: 30%; background-color: #f1f1f1; padding: 20px; }
+    .main { flex: 70%; background-color: white; padding: 20px; }
+    .fakeimg { background-color: #aaa; width: 100%; padding: 20px; }
+    .footer { padding: 20px; text-align: center; background: #ddd; }
+    @media screen and (max-width:700px) { .row { flex-direction: column; } }
+    @media screen and (max-width:400px) { .navbar a { float: none; width: 100%; } }
+  </style>
 
-/* Style the body */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
+  <!-- CleverTap stub array (safe to define before their script loads) -->
+  <script type="text/javascript">
+    var clevertap = window.clevertap || { event: [], profile: [], account: [], onUserLogin: [], notifications: [], privacy: [] };
+    // Replace with your real CleverTap account id in production
+    clevertap.account.push({ id: "TEST-98R-R54-5Z6Z" });
+    clevertap.privacy.push({ optOut: false });
+    clevertap.privacy.push({ useIP: false });
 
-/* Header/logo Title */
-.header {
-  padding: 80px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-}
-
-
-/* Increase the font size of the heading */
-.header h1 {
-  font-size: 40px;
-}
-
-/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-}
-
-/* Style the navigation bar links */
-.navbar a {
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-}
-
-
-/* Right-aligned link */
-.navbar a.right {
-  float: right;
-}
-
-/* Change color on hover */
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Active/current link */
-.navbar a.active {
-  background-color: #666;
-  color: white;
-}
-
-/* Column container */
-.row {  
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-}
-
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.side {
-  -ms-flex: 30%; /* IE10 */
-  flex: 30%;
-  background-color: #f1f1f1;
-  padding: 20px;
-}
-
-/* Main column */
-.main {   
-  -ms-flex: 70%; /* IE10 */
-  flex: 70%;
-  background-color: white;
-  padding: 20px;
-}
-
-/* Fake image, just for this example */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
-
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-}
-
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 700px) {
-  .row {   
-    flex-direction: column;
-  }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .navbar a {
-    float: none;
-    width: 100%;
-  }
-}
-</style>
-<script type="text/javascript">
-     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
- // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-clevertap.account.push({ "id": "TEST-98R-R54-5Z6Z" });
-clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
-clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
- (function () {
-		 var wzrk = document.createElement('script');
-		 wzrk.type = 'text/javascript';
-		 wzrk.async = true;
-		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
-		 var s = document.getElementsByTagName('script')[0];
-		 s.parentNode.insertBefore(wzrk, s);
-  })();
-</script>
-<!--
-<script type="text/javascript">
-  function userLogin() {
- // with the exception of one of Identity, Email, or FBID
-// each of the following fields is optional
-
-clevertap.onUserLogin.push({
- "Site": {
-   "Name": "Tuna Chan",            // String
-   "Identity": 290507,              // String or number
-   "Email": "tuna@gmail.com",         // Email address of the user
-   "Phone": "+75920020",           // Phone (with the country code)
-   "Gender": "F",                     // Can be either M or F
-   "DOB": new Date(),                 // Date of Birth. Date object
-// optional fields. controls whether the user will be sent email, push etc.
-   "MSG-email": false,                // Disable email notifications
-   "MSG-push": true,                  // Enable push notifications
-   "MSG-sms": true,                   // Enable sms notifications
-   "MSG-whatsapp": true,              // Enable WhatsApp notifications
- }
-})
- alert('Profile Updated');
-}--> 
-<script>clevertap.event.push("HomePage Viewed");
-</script>
+    // Load the CleverTap library
+    (function () {
+      var wzrk = document.createElement('script');
+      wzrk.type = 'text/javascript';
+      wzrk.async = true;
+      wzrk.src = (document.location.protocol === 'https:' ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wzrk, s);
+    })();
+  </script>
 </head>
 <body>
 
-<div class="header">
-  <h1>Vellesketchers</h1>
-  <p>A <b>Creator</b> Dreamer Artist.</p>
-  <img src="Dobby.png" alt="Tuna" width="60%" height="40%">
+  <div class="header">
+    <h1>Vellesketchers</h1>
+    <p>A <b>Creator</b> Dreamer Artist.</p>
+    <img src="Dobby.png" alt="Tuna" style="max-width:60%; height:auto;">
+  </div>
 
-</div>
+  <div class="navbar">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html" class="active">About Me</a>
+    <a href="login.html" class="active">Login</a>
+    <a href="https://www.instagram.com/vellesketchers/?hl=en" class="right">Instagram</a>
+  </div>
 
-<div class="navbar">
-  <a href="index.html" class="active">Home</a>
-  <a href="about.html" class="active">About Me</a>
-  <a href="login.html" class="active">Login</a>
-  <!-- <a href="#">Link</a> -->
-  <a href="https://www.instagram.com/vellesketchers/?hl=en" class="right">Instagram</a>
-</div>
-
-<div class="row">
-  <div class="side">
-    <h2>About Me</h2>
-    <h5>My Work:</h5>
-    <div class="fakeimg" style="height:300px; width: 250px;"><img src="Tuna.png" alt="Tuna" width="100%" height="100%">
+  <div class="row">
+    <div class="side">
+      <h2>About Me</h2>
+      <h5>My Work:</h5>
+      <div class="fakeimg" style="height:300px; width:250px;">
+        <img src="Tuna.png" alt="Tuna" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <p>I like to sketch the world with my imagination</p>
+      <h3>More Work</h3>
+      <p>Look at some more of my creations</p>
+      <div class="fakeimg" style="height:250px; width:250px;">
+        <img src="birdie.png" alt="eye" style="width:100%; height:102%; object-fit:cover;">
+      </div><br>
+      <div class="fakeimg" style="height:200px; width:250px;">
+        <img src="kat.png" alt="eye" style="width:100%; height:102%; object-fit:cover;">
+      </div><br>
+      <p>You can Follow my art on Instagram</p>
     </div>
-    <p>I like to sketch the world with my imagination</p>
-    <h3>More Work</h3>
-    <p>Look at some more of my creations</p>
-    <div class="fakeimg" style="height:250px; width: 250px"><img src="birdie.png" alt="eye" width="100%" height="102%"></div><br>
-    <div class="fakeimg" style="height:200; width: 250px"><img src="kat.png" alt="eye" width="100%" height="102%"></div><br>
-    <p>You can Follow my art on Instagram</p>
-    <!-- [comment] <div class="fakeimg" style="height:60px;">Image</div>-->
+
+    <div class="main">
+      <h2>Beauty of the beholder</h2>
+      <h5>Digital painting of Iris, NOVEMBER 26, 2020</h5>
+      <div class="fakeimg" style="height:400px;">
+        <img src="eye.png" alt="eye" style="width:100%; height:102%; object-fit:cover;">
+      </div>
+      <p>Digital Art</p>
+      <p>The inspiration behind this art is the different perspective of people despite having the same view</p>
+      <br>
+      <h2>L</h2>
+      <h5>He who strikes first, wins.</h5>
+      <div class="fakeimg" style="height:400px;">
+        <img src="L.png" alt="L" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <p>Intelligence, Rivalry</p>
+      <p>Who does not like Anime, The Epic Death Note creation.</p>
+    </div>
   </div>
-  <div class="main">
-    <h2>Beauty of the beholder</h2>
-    <h5>Digital painting of Iris, NOVEMBER 26, 2020</h5>
-    
-      <div class="fakeimg" style="height:400px;"><img src="eye.png" alt="eye" width="100%" height="102%"></div> 
-   
-    <p>Digital Art</p>
-    <p>The inspiration behind this art is the different perspective of people despite having the same view</p>
-    <br>
-    <h2>L</h2>
-    <h5> He who strikes first, wins.</h5>
-    <div class="fakeimg" style="height:400px;"><img src="L.png" alt="eye" width="100%" height="100%"></div>
-    <p> Intelligence, Rivalry   </p>
-    <p>Who does not like Anime, The Epic Death Note creation. </p>
+
+  <div class="footer">
+    <h2>© Rashmi Yadav</h2>
   </div>
-</div>
 
-<div class="footer">
-  <h2> © Rashmi Yadav</h2>
-</div>
-<script>
-
-         clevertap.notifications.push({
-          "titleText":'Would you like to receive Push Notifications?',
-          "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
-          "okButtonText":'Sign me up!',
-          "rejectButtonText":'No thanks',
-          "okButtonColor":'#f28046',
-         "serviceWorkerPath": "clevertap_sw.js"
-         });
-
-	
-// Check permission immediately when page loads
-console.log("Initial Notification Permission:", Notification.permission);
-
-// Watch for permission changes (Chrome & modern browsers support this)
-if ('permissions' in navigator) {
-    navigator.permissions.query({ name: 'notifications' }).then((permissionStatus) => {
-        console.log("Current Permission:", permissionStatus.state);
-
-        // Fires whenever user changes browser-level notification permission
-        permissionStatus.onchange = function () {
-            console.log("Notification Permission Changed To:", this.state);
-        };
+  <!-- CleverTap opt-in popup config (push into stub array) -->
+  <script>
+    clevertap.notifications.push({
+      titleText: 'Would you like to receive Push Notifications?',
+      bodyText: 'We promise to only send you relevant content and give you updates on your transactions',
+      okButtonText: 'Sign me up!',
+      rejectButtonText: 'No thanks',
+      okButtonColor: '#f28046',
+      serviceWorkerPath: 'clevertap_sw.js'
     });
-}
- 
+  </script>
 
-</script>
- 
+  <!-- Notification permission watcher: immediate log, Permissions API event, and fallback polling -->
+  <script>
+    (function () {
+      // Immediately log current permission
+      console.log('Initial Notification.permission =', Notification.permission);
+
+      // Helper to handle permission change
+      function handlePermissionChange(newPerm) {
+        console.log('Notification permission is now:', newPerm);
+        // If you only care about "granted", you can add:
+        if (newPerm === 'granted') {
+          console.log('Permission granted — you can send notifications now.');
+          // Example: if you want to register service worker when granted:
+          // navigator.serviceWorker.register('/sw.js').then(...)
+        }
+      }
+
+      // Try Permissions API first (most modern Chromium & Firefox)
+      if (navigator.permissions && navigator.permissions.query) {
+        try {
+          navigator.permissions.query({ name: 'notifications' }).then(function (permissionStatus) {
+            // permissionStatus.state is 'granted' | 'denied' | 'prompt'
+            handlePermissionChange(permissionStatus.state);
+            // Set up onchange listener for live changes
+            permissionStatus.onchange = function () {
+              handlePermissionChange(this.state);
+            };
+          }).catch(function (err) {
+            // Query failed — fall back to polling below
+            console.warn('Permissions.query for notifications failed:', err);
+            startPollingFallback();
+          });
+        } catch (e) {
+          console.warn('Permissions API threw:', e);
+          startPollingFallback();
+        }
+      } else {
+        // Permissions API not available -> fallback to polling
+        startPollingFallback();
+      }
+
+      // --- Fallback polling approach (works where Permissions API isn't supported) ---
+      var pollIntervalId = null;
+      function startPollingFallback() {
+        // Avoid starting multiple polls
+        if (pollIntervalId) return;
+
+        var last = Notification.permission;
+        // log initial state (already logged above) but keep last in sync
+        last = Notification.permission;
+
+        pollIntervalId = setInterval(function () {
+          var current = Notification.permission;
+          if (current !== last) {
+            last = current;
+            handlePermissionChange(current);
+          }
+        }, 1500); // check every 1.5 seconds; change if you need more/less frequent
+      }
+
+      // Stop polling when page unloads
+      window.addEventListener('beforeunload', function () {
+        if (pollIntervalId) {
+          clearInterval(pollIntervalId);
+          pollIntervalId = null;
+        }
+      });
+
+      // Optional: if you want to prompt for permission in code (will show browser dialog)
+      // call Notification.requestPermission().then(result => handlePermissionChange(result));
+      // But don't call it automatically unless you want the browser dialog to appear.
+    })();
+  </script>
 </body>
 </html>
