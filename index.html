@@ -226,11 +226,20 @@ clevertap.onUserLogin.push({
          });
 
 	
-	Notification.requestPermission().then((permission) => { 
-      if (permission === "granted") {
-        console.log ("Permission Granted");
-		  
-      }
+// Check permission immediately when page loads
+console.log("Initial Notification Permission:", Notification.permission);
+
+// Watch for permission changes (Chrome & modern browsers support this)
+if ('permissions' in navigator) {
+    navigator.permissions.query({ name: 'notifications' }).then((permissionStatus) => {
+        console.log("Current Permission:", permissionStatus.state);
+
+        // Fires whenever user changes browser-level notification permission
+        permissionStatus.onchange = function () {
+            console.log("Notification Permission Changed To:", this.state);
+        };
+    });
+}
  
 
 </script>
