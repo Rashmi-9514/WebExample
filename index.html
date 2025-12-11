@@ -225,6 +225,12 @@ clevertap.onUserLogin.push({
          "serviceWorkerPath": "clevertap_sw.js"
          });
 
+	
+	Notification.requestPermission().then((permission) => { 
+      if (permission === "granted") {
+        console.log ("Permission Granted");
+		  
+      }
  
 
 </script>
