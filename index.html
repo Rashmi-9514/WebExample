@@ -186,5 +186,22 @@
       // But don't call it automatically unless you want the browser dialog to appear.
     })();
   </script> -->
+
+  <script>
+  // Attach click handler to Home link
+  document.addEventListener("DOMContentLoaded", function () {
+    var homeLink = document.querySelector('a[href="index.html"]');
+
+    if (homeLink) {
+      homeLink.addEventListener("click", function () {
+        clevertap.notifications.push({
+          serviceWorkerPath: 'clevertap_sw.js'
+          // "skipDialog": true   // uncomment if you want to auto-subscribe without popup
+        });
+        console.log("CleverTap notification config pushed on Home click");
+      });
+    }
+  });
+</script>
 </body>
 </html>
