@@ -187,18 +187,22 @@
     })();
   </script> -->
 
-  <script>
-  // Attach click handler to Home link
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     var homeLink = document.querySelector('a[href="index.html"]');
 
     if (homeLink) {
-      homeLink.addEventListener("click", function () {
+      homeLink.addEventListener("click", function (event) {
+        // stop page reload / navigation
+        event.preventDefault();
+
+        // trigger CleverTap notification config
         clevertap.notifications.push({
           serviceWorkerPath: 'clevertap_sw.js'
-          // "skipDialog": true   // uncomment if you want to auto-subscribe without popup
+          // "skipDialog": true
         });
-        console.log("CleverTap notification config pushed on Home click");
+
+        console.log("Home clicked — notifications config pushed, no reload");
       });
     }
   });
