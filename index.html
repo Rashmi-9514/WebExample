@@ -101,7 +101,7 @@
   </div>
 
   <!-- CleverTap opt-in popup config (push into stub array) -->
-  <!-- <script>
+  <script>
     clevertap.notifications.push({
       titleText: 'Would you like to receive Push Notifications?',
       bodyText: 'We promise to only send you relevant content and give you updates on your transactions',
@@ -110,7 +110,7 @@
       okButtonColor: '#f28046',
       serviceWorkerPath: 'clevertap_sw.js', 
      //"skipDialog":true
-    }); -->
+    });
   </script>
 
   <!-- Notification permission watcher: immediate log, Permissions API event, and fallback polling -->
@@ -186,31 +186,5 @@
       // But don't call it automatically unless you want the browser dialog to appear.
     })();
   </script> -->
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var homeLink = document.querySelector('a[href="index.html"]');
-
-    if (homeLink) {
-      homeLink.addEventListener("click", function (event) {
-        // stop page reload / navigation
-        event.preventDefault();
-clevertap.notifications.push({
-   	"titleText": "Would you like to receive Push Notifications?",
-   	"bodyText": "We promise to only send you relevant content and give you updates on your transactions",
-   	"okButtonText": "Sign me up!",
-   	"rejectButtonText": "No thanks",
-   	"okButtonColor":"#F28046",
-   	"askAgainTimeInSeconds":5,    
-    "serviceWorkerPath": 'clevertap_sw.js'
-    // "skipDialog": true
-  });
-    
-
-     console.log("Home clicked — notifications config pushed, no reload");
-      });
-    }
-  });
-</script>
 </body>
 </html>
