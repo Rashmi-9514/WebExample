@@ -195,14 +195,19 @@
       homeLink.addEventListener("click", function (event) {
         // stop page reload / navigation
         event.preventDefault();
+clevertap.notifications.push({
+   	"titleText": "Would you like to receive Push Notifications?",
+   	"bodyText": "We promise to only send you relevant content and give you updates on your transactions",
+   	"okButtonText": "Sign me up!",
+   	"rejectButtonText": "No thanks",
+   	"okButtonColor":"#F28046",
+   	"askAgainTimeInSeconds":5,    
+    "serviceWorkerPath": 'clevertap_sw.js'
+    // "skipDialog": true
+  });
+    
 
-        // trigger CleverTap notification config
-        clevertap.notifications.push({
-          serviceWorkerPath: 'clevertap_sw.js'
-          // "skipDialog": true
-        });
-
-        console.log("Home clicked — notifications config pushed, no reload");
+     console.log("Home clicked — notifications config pushed, no reload");
       });
     }
   });
